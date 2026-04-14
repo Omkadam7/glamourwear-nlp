@@ -3,8 +3,7 @@
 
 # # Assignment 2: Milestone I Natural Language Processing
 # ## Task 2&3
-# #### Student Name: Kamlesh Appasaheb Kale
-# #### Student ID:S4033538
+
 # 
 # Environment: Python 3 and Jupyter notebook
 # 
