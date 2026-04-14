@@ -22,22 +22,22 @@ on their review text. It is split into two milestones:
 ## 🚀 Demo
 
 ### Home Page
-![Home Page](docs/screenshots/1-home-page.png)
+![Home Page](docs/screenshots/1-Home-Page.png)
 
 ### Browse Items
-![Browse Items](docs/screenshots/2-browse-items.png)
+![Browse Items](docs/screenshots/2-Browse-Items.png)
 
 ### Customer Reviews
-![Customer Reviews](docs/screenshots/3-customer-reviews.png)
+![Customer Reviews](docs/screenshots/3-Customer-Reviews.png)
 
 ### Add a Review
-![Add Review](docs/screenshots/4-add-review.png)
+![Add Review](docs/screenshots/4-Add-Review.png)
 
 ### ML Model Recommendation
-![Model Recommendation](docs/screenshots/5-model-recommendation.png)
+![Model Recommendation](docs/screenshots/5-Model-Recommendation.png)
 
 ### Customer Override
-![Customer Updated Review](docs/screenshots/6-customer-updated-review.png)
+![Customer Updated Review](docs/screenshots/6-Customer-Updated-Review.png)
 
 ---
 
