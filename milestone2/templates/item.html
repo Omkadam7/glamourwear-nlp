@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- setting mobile-friendly view -->
+    <title>{{ title }} - GlamourWear</title>
+
+    <!-- linking CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="browse-page">
+
+    <!-- creating navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>  <!-- home link -->
+            <li><a href="/browse">Browse Items</a></li> <!-- browse link -->
+        </ul>
+    </nav>
+
+    <div class="item-container">
+        <div class="item-header"> <!-- showing item header and then item title and item description -->
+            <h1>{{ title }}</h1>
+            <p><strong>Description:</strong> {{ description }}</p>
+        </div>
+
+         <!-- this is for checking for new reviews -->
+        {% if new_reviews %}
+        <div class="new-reviews-section">
+            <h2>Newly Submitted Reviews</h2>
+            <ul class="review-list">  <!-- listing reviews -->
+                {% for review in new_reviews %}
+                <li class="review-item">
+                    <h4>{{ review['Title'] }}</h4>
+                    <p>{{ review['Review Text'] }}</p>
+                    <p><strong>Rating:</strong> {{ review['Rating'] }} / 5</p>
+                    <p><strong>Model Recommended:</strong> {{ review['Model Recommendation'] }}</p>
+
+                     <!-- customer feedback form where customers can override the model's recommendation of yes/no -->
+                    <form action="{{ url_for('edit_review') }}" method="POST">
+                        <input type="hidden" name="review_title" value="{{ review['Title'] }}">
+                        <input type="hidden" name="model_recommendation" value="{{ review['Model Recommendation'] }}">
+                        <p>If you want to change the model's recommendation, select your choice below:</p>
+                        <label><input type="radio" name="recommendation" value="Yes" required> Yes</label>
+                        <label><input type="radio" name="recommendation" value="No" required> No</label>
+
+                        <!-- submit button -->
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    {% if review['Customer Feedback'] %}
+                    <p><strong>Customer Updated (Recommended):</strong> {{ review['Customer Feedback'] }}</p>
+                    {% endif %}
+                </li>
+                <hr>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- this is existing customer reviews section -->
+        <div class="reviews-section">
+            <h2>Customer Reviews</h2>
+            {% if not reviews.empty %}
+            <ul class="review-list">
+                {% for index, review in reviews.iterrows() %}
+                <li class="review-item">
+                    <h4>{{ review['Title'] }}</h4>
+                    <p>{{ review['Review Text'] }}</p>
+                    <p><strong>Rating:</strong> {{ review['Rating'] }} / 5</p>
+                    <p><strong>Model Recommended:</strong> 
+                        {% if review['Recommended IND'] == 1 %} Yes {% else %} No {% endif %}
+                    </p>
+                </li>
+                <hr>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No reviews available for this item.</p>
+            {% endif %}
+        </div>
+
+        <!-- this is add your new review section -->
+        <div class="add-review-section">
+            <h2>Add Your Review</h2>
+            <form method="POST">
+                <label for="review_title">Review Title:</label><br>
+                <input type="text" id="review_title" name="review_title" required><br>
+
+                <label for="review_description">Review Description:</label><br>
+                <textarea id="review_description" name="review_description" required></textarea><br>
+
+                <label for="rating">Rating out of 5:</label><br>
+                <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+
+                <!-- post button -->
+                <button type="submit" class="view-button">Post My Review!</button>
+            </form>
+        </div>
+
+        <!-- recommended products section -->
+        <div class="recommended-products">
+            <h2>You May Also Like</h2>
+            {% if not recommended_products.empty %}
+            <div class="search-results">
+                {% for index, product in recommended_products.iterrows() %}
+                <div class="search-item">
+                    <h3>{{ product['Clothes Title'] }}</h3>
+                    <p>{{ product['Clothes Description'] }}</p>
+                    <a href="/item/{{ product['Clothes Title'] }}" class="view-button">View Item</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No recommended products available at the moment.</p>
+            {% endif %}
+        </div>
+
+        <!-- back button -->
+        <a href="/browse" class="back-button">Back to Browse</a>
+    </div>
+</body>
+</html>

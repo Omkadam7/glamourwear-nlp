@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- setting mobile-friendly view -->
+    <title>Browse Items - GlamourWear</title>
+    <!-- linking CSS file -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="browse-page">
+
+    <!-- creating navigation bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li> <!-- home link -->
+            <li><a href="/browse">Browse Items</a></li>  <!-- browse link -->
+        </ul>
+    </nav>
+
+    <!-- adding page header -->
+    <header class="header">
+        <h1>Browse Our Collection</h1>
+    </header>
+
+     <!-- search section -->
+    <div class="content">
+        <form method="POST">
+
+            <!-- search box -->
+            <input type="text" name="search_term" placeholder="Search for items..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- checking for search results -->
+        {% if results is not none %}
+        <div class="search-message" style="display: block;">
+            {% if not results.empty %}
+
+                <!-- showing result count -->
+                <p>{{ results.shape[0] }} items matched your search.</p>
+            {% else %}
+                <p>No items matched your search.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="search-results"> <!-- displaying search results -->
+            {% if results is not none and not results.empty %}
+                {% for index, row in results.iterrows() %}
+                    <div class="search-item">  <!-- for each search item -->
+                        <h3>{{ row['Clothes Title'] }}</h3>
+                        <p>{{ row['Clothes Description'] }}</p>
+
+                        <!-- view button -->
+                        <a href="/item/{{ row['Clothes Title'] }}" class="view-button">View Item</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

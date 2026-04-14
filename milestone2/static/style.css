@@ -1,0 +1,412 @@
+/* resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* applying font */
+}
+
+/* styling the home page background */
+body {
+    background-image: url('/static/images/home.jpg'); /* loading home background image */
+    background-size: cover;
+    background-position: center; /* centering the image */
+    background-attachment: fixed; /* keeping the background fixed while scrolling */
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* styling the browse page background */
+.browse-page {
+    background-image: url('/static/images/browse.jpg'); /* loading browse background image */
+    background-size: cover; /* covering the entire page */
+    background-position: center;  /* centering the image */
+    background-attachment: fixed;
+    color: black;
+    min-height: 100vh;
+}
+
+/* styling the navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7);  /* for semi-transparent background */
+    position: sticky;   /* keeping it at the top while scrolling */
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* styling navigation links */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.navbar ul li {
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
+}
+
+/* changing the link style on hover */
+.navbar ul li a:hover {
+    background-color: #f0a500;
+    color: black;
+    transform: scale(1.1);
+}
+
+/* styling the header section on browse page */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh; /* setting height of header */
+    background: rgba(0, 0, 0, 0.5);  /* adding a semi-transparent overlay */
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    letter-spacing: 1.5px;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1.5s ease-in-out; 
+}
+
+/* styling the hero section used on the home page */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4); 
+    text-align: center;
+    padding: 20px;
+}
+
+/* styling the content inside the hero section */
+.hero-content {
+    padding: 40px;
+    border-radius: 15px;  /* rounding corners */
+    background-color: rgba(255, 255, 255, 0.1); /* adding light transparent background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    animation: fadeIn 1.5s ease-in-out; 
+    max-width: 800px;
+}
+
+/* styling hero section text */
+.hero-content h2 {
+    font-size: 4rem; 
+    color: white;
+    text-transform: none; 
+    letter-spacing: 0.5px; 
+    font-family: 'Georgia', serif; 
+    margin: 0; 
+    line-height: 1; 
+}
+
+
+.hero-content p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: white; /* changed to white */
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-content .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f0a500;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.hero-content .cta-button:hover {
+    background-color: white;
+    color: #f0a500;
+    transform: scale(1.1);
+}
+
+/* styling input fields used on forms */
+input[type="text"] {
+    padding: 12px;
+    width: 70%;
+    margin-right: 10px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+}
+
+/* styling buttons used across the website */
+button {
+    padding: 12px 25px;
+    background-color: #f0a500;
+    border: none;
+    border-radius: 25px;  /* rounding corners */
+    cursor: pointer;  /* changing cursor on hover */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: white; /* changing color on hover */
+    color: #f0a500;
+    transform: scale(1.05);
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+/* styling individual search items */
+.search-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 15px;  /* rounding corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.search-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.search-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.search-item p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* styling the search results section to display items in a grid */
+.search-message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1rem; 
+    font-weight: 600;
+    color: black; 
+    background-color: #f0a500;
+    padding: 8px 15px; 
+    border-radius: 20px; 
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in-out;
+    display: none; 
+}
+
+/* showing search message when results are available */
+.search-message.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.view-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0a500;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.view-button:hover {
+    background-color: #333;
+    color: white;
+    transform: scale(1.05);
+}
+
+.content form {
+    margin: 20px auto;
+    width: 80%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* styling item page */
+body.item-page {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.item-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-header h1 {
+    font-size: 2.5rem; /* setting font size for product title */
+    color: #333;
+}
+
+.item-header p {
+    font-size: 1.1rem;  /* setting font size for product description */
+    color: #666;
+}
+
+/* styling reviews section */
+.reviews-section, .new-reviews-section {
+    margin-top: 20px;
+    text-align: left;
+    /* used in item.html to display reviews */
+}
+
+/* styling the section headings */
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0a500;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* styling the review list */
+.review-list {
+    list-style: none;
+    padding: 0;
+}
+
+.review-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.review-item:hover {
+    transform: scale(1.02);
+}
+
+.review-item h4 {
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.review-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* styling add review section */
+.add-review-section input,
+.add-review-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.add-review-section textarea {
+    height: 80px;
+}
+
+.add-review-section button {
+    width: 100%;
+    padding: 12px;
+    background-color: #f0a500;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-review-section button:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* styling recommended products section*/
+.recommended-products {
+    margin-top: 40px;
+}
+
+.recommended-products .search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.search-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.search-item h3 {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.search-item p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* back button */
+.back-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #f0a500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: fit-content;
+    margin: auto;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #333;
+    color: white;
+}
